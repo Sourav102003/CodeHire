@@ -4,9 +4,9 @@ const baseURL =
     ? import.meta.env.VITE_API_URL
     : '/api'
 
-const axiosinstance = axios.create({
+const axiosInstance = axios.create({
   baseURL,
   withCredentials: true,
 })
 
-export default axiosinstance
+export default axiosInstance
