@@ -25,9 +25,6 @@ app.use("/api/inngest", serve({ client: inngest, functions }));
 app.use("/api/chat", chatRoutes);
 app.use("/api/sessions", sessionRoutes);
 
-// make our app ready for deployment
-
-
 const startServer = async () => {
   try {
     await ConnectDB();
