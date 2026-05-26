@@ -1,8 +1,5 @@
 import axios from 'axios'
-const baseURL =
-  import.meta.env.VITE_API_URL
-    ? import.meta.env.VITE_API_URL
-    : '/api'
+const baseURL ='https://codehire-eifr.onrender.com/api';
 
 const axiosinstance = axios.create({
   baseURL,
