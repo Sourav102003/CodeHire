@@ -27,7 +27,7 @@ app.use(clerkMiddleware()); // this adds auth field to request object: req.auth(
 app.use("/api/inngest", serve({ client: inngest, functions }));
 app.use("/api/chat", chatRoutes);
 app.use("/api/sessions", sessionRoutes);
-
+console.log("CLIENT_URL =", ENV.CLIENT_URL);
 const startServer = async () => {
   try {
     await ConnectDB();
