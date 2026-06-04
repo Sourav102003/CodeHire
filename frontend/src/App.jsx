@@ -9,6 +9,7 @@ import SessionPage from './pages/SessionPage.jsx';
 
 
 function App() {
+  console.log("API_URL",import.meta.env.VITE_API_URL);
   const { isSignedIn, isLoaded } = useUser()
   if (!isLoaded) return null;
   console.log(isSignedIn)
