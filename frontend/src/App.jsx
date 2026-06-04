@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage.jsx';
 import ProblemPage from './pages/ProblemPage.jsx';
 import ProblemsPage from './pages/ProblemsPage.jsx';
 import SessionPage from './pages/SessionPage.jsx';
+import axiosInstance from '../lib/axios.js';
 
 
 function App() {
