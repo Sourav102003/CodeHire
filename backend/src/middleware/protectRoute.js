@@ -2,20 +2,22 @@ import { requireAuth } from '@clerk/express'
 import User from '../models/User.js';
 
 export const protectRoute = [
-    requireAuth(),//{signInUrl:"/sign-in"}err part
-    async (req, res, next) => {
-        try {
-            const clerkId = req.auth().userId;
-            if (!clerkId) return res.status(401).json({ message: "Unauthorized - Invalid Token" });
-            const user = await User.findOne({ clerkId });
-            if (!user) {
-                return res.status(401).json({ message: "User not found" });
-            }
-            req.user = user;
-            next();
-        } catch (error) {
-            console.error("Error in protectRoute middleware:", error);
-            res.status(500).json({ message: "Internal Server Error" });
-        }
+  requireAuth(),
+  async (req, res, next) => {
+    try {
+      console.log("AUTH OBJECT:", req.auth());
+
+      const clerkId = req.auth().userId;
+      console.log("CLERK ID:", clerkId);
+
+      const user = await User.findOne({ clerkId });
+      console.log("USER FOUND:", user);
+
+      req.user = user;
+      next();
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Internal Server Error" });
     }
-]
+  },
+];

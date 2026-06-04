@@ -10,6 +10,7 @@ import { inngest, functions } from "./lib/inngest.js";
 
 import chatRoutes from "./routes/chatRoute.js";
 import sessionRoutes from "./routes/sessionRoute.js";
+import { requireAuth } from '@clerk/express'
 
 const app = express();
 
@@ -27,6 +28,12 @@ app.use(clerkMiddleware()); // this adds auth field to request object: req.auth(
 app.use("/api/inngest", serve({ client: inngest, functions }));
 app.use("/api/chat", chatRoutes);
 app.use("/api/sessions", sessionRoutes);
+app.get("/api/test-auth", requireAuth(), (req, res) => {
+  res.json({
+    success: true,
+    auth: req.auth(),
+  });
+});
 console.log("CLIENT_URL =", ENV.CLIENT_URL);
 const startServer = async () => {
   try {
